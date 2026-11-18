@@ -1,0 +1,13 @@
+|--- URLSimilarityIndex <= 98.50
+|   |--- class: 0
+|--- URLSimilarityIndex >  98.50
+|   |--- LineOfCode <= 91.50
+|   |   |--- class: 0
+|   |--- LineOfCode >  91.50
+|   |   |--- IsHTTPS <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- IsHTTPS >  0.50
+|   |   |   |--- NoOfSubDomain <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- NoOfSubDomain >  0.50
+|   |   |   |   |--- class: 1

@@ -1,196 +1,60 @@
-Detector de Phishing com Inteligência Artificial
+# Detector de Phishing com Inteligência Artificial
 
-Projeto desenvolvido para a disciplina de Inteligência Artificial do curso de Ciência da Computação da Universidade Presbiteriana Mackenzie.
+Projeto de Inteligência Artificial, Ciência da Computação, Universidade Presbiteriana Mackenzie, turma 7º N. Professor Ivan Carlos Alcântara de Oliveira.
 
-O objetivo é utilizar técnicas de Aprendizado de Máquina Supervisionado para classificar websites como phishing ou legítimos a partir de características estruturais e de conteúdo.
+## Integrantes
 
-Integrantes
+- Alexandre Eiji Tomimura Carvalho — RA 10371680 — 10371680@mackenzista.com.br
+- João Pedro Pioltini de Oliveira — RA 10425643 — 10425643@mackenzista.com.br
+- Matheus Veiga Bacetic Joaquim — RA 10425638 — 10425638@mackenzista.com.br
 
-Alexandre Eiji Tomimura Carvalho — RA 10371680
+## Solução
 
-João Pedro Pioltini de Oliveira — RA 10425643
+Classificação offline de websites como phishing (0) ou legítimos (1), com 50 atributos numéricos previamente extraídos da base PhiUSIIL. São comparados Regressão Logística, Árvore de Decisão e Random Forest. O protótipo não acessa as páginas da base nem verifica URLs arbitrárias em tempo real.
 
-Matheus Veiga Bacetic Joaquim — RA 10425638
+## Arquivos da entrega
 
-Dataset
+- `artigo/Artigo_Final.pdf`: artigo no formato SBC solicitado.
+- `entrega/Rubrica_N2_identificada.docx`: autoavaliação atual de 72/100.
+- `notebooks/Projeto_IA_Final.ipynb`: análise e experimento com saídas salvas.
+- `src/experimento.py`: aquisição, preparação, treinamento e avaliação.
+- `src/demonstrar.py`: inferência offline com exemplos reservados de teste.
+- `modelos/arvore.joblib`: modelo treinado para demonstração.
+- `resultados/final/`: métricas, matrizes, previsões, estatísticas e metadados.
+- `dados/README.md`: origem, licença e acesso à base.
 
-Foi utilizado o PhiUSIIL Phishing URL (Website) Dataset, disponibilizado pelo UCI Machine Learning Repository.
+## Como executar
 
-Link: https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset
+Python 3.12 recomendado. Abra um terminal na raiz deste projeto:
 
-O conjunto possui:
+```powershell
+python -m pip install -r requirements.txt
+python src/experimento.py
+python src/demonstrar.py
+```
 
-235.795 registros;
+O experimento baixa o CSV da UCI automaticamente para `dados/` se ele não existir. A base grande não acompanha a entrega pelo navegador. Para apenas demonstrar o modelo já treinado, execute `python src/demonstrar.py`; não é preciso baixar a base.
 
-54 atributos;
+Para usar o notebook, abra a pasta inteira do projeto em um ambiente Jupyter e execute `notebooks/Projeto_IA_Final.ipynb`. O notebook importa o código de `src/`; preserve essa estrutura de pastas.
 
-1 variável alvo (label);
+## Resultados e limites
 
-0 = phishing;
+Na divisão estratificada 80/20, a Regressão Logística teve seis falsos negativos e nenhum falso positivo; árvore e floresta acertaram os 47.159 registros de teste. Na separação por domínio literal, a regressão teve cinco falsos negativos, e cada modelo de árvores teve dois, sem falsos positivos. A ablação sem URLSimilarityIndex aumentou os erros.
 
-1 = legítimo.
+Métricas completas: `resultados/final/metricas.csv`. A auditoria identificou 808 repetições de vetores numéricos e 2.110 domínios compartilhados na divisão aleatória. Resultados altos nesta base não garantem detecção de golpes novos. Não houve validação temporal nem em base externa, e a extração original dos atributos pré-computados não foi reconstruída. Utilizar como experimento acadêmico, com revisão humana de decisões em eventual aplicação futura.
 
-Distribuição das classes:
+## Dados
 
-100.945 registros de phishing — 42,81%;
+PhiUSIIL Phishing URL (Website), Arvind Prasad e Shalini Chandra (2024), UCI Machine Learning Repository, ID 967. Licença CC BY 4.0.
 
-134.850 registros legítimos — 57,19%.
+Fonte: https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset
 
-Etapas do projeto
+O código registra a origem, versões e SHA-256 do CSV em `resultados/final/execucao.json`. Não abrir os endereços contidos na base.
 
-O desenvolvimento foi dividido nas seguintes etapas:
+## Pendências antes da submissão
 
-Carregamento do dataset;
+Gravar e publicar no YouTube o vídeo de até cinco minutos, inserir seu link no artigo, confirmar a publicação final dos arquivos neste repositório e revisar a autoavaliação conforme as evidências. A nota atual considera vídeo ausente e publicação final pendente. Um integrante envia o artigo PDF e a rubrica Word pelo AVA no prazo da disciplina.
 
-Análise exploratória dos dados;
+## Assistência de IA
 
-Verificação de valores nulos e duplicados;
-
-Análise da distribuição das classes;
-
-Análise de correlação dos atributos;
-
-Preparação dos dados;
-
-Divisão em treino e teste;
-
-Treinamento dos modelos;
-
-Avaliação dos resultados;
-
-Comparação entre os modelos.
-
-Preparação dos dados
-
-O dataset não apresentou valores nulos nem registros duplicados.
-
-As colunas textuais abaixo foram retiradas do conjunto utilizado diretamente pelos modelos:
-
-URL
-
-Domain
-
-TLD
-
-Title
-
-Foram utilizadas 50 características numéricas para o treinamento.
-
-Os dados foram divididos em:
-
-80% para treinamento;
-
-20% para teste.
-
-A divisão foi estratificada para preservar a proporção entre phishing e sites legítimos.
-
-Modelos utilizados
-
-Foram avaliados três algoritmos de classificação:
-
-Regressão Logística;
-
-Árvore de Decisão;
-
-Random Forest.
-
-Para a Regressão Logística foi utilizado StandardScaler para padronização dos atributos.
-
-Métricas de avaliação
-
-Os modelos foram avaliados utilizando:
-
-Accuracy;
-
-Precision;
-
-Recall;
-
-F1-Score;
-
-Matriz de Confusão.
-
-Como o objetivo principal do projeto é detectar ataques, a classe phishing (0) foi considerada como classe positiva nas métricas de Precision, Recall e F1-Score.
-
-Resultados
-
-A Regressão Logística apresentou desempenho elevado no conjunto de teste:
-
-Accuracy: 0,9999;
-
-Precision para phishing: 1,0000;
-
-Recall para phishing: 0,9997;
-
-F1-Score para phishing: 0,9999.
-
-Na matriz de confusão, apenas 6 registros de phishing foram classificados como legítimos, enquanto nenhum site legítimo foi classificado incorretamente como phishing.
-
-Também foi realizada uma análise removendo o atributo URLSimilarityIndex. Mesmo sem esse atributo, a Regressão Logística manteve desempenho elevado, indicando que a classificação não depende exclusivamente de uma única característica.
-
-Os resultados completos da Árvore de Decisão, Random Forest e a comparação entre os modelos estão disponíveis no notebook do projeto.
-
-Estrutura do repositório
-
-projeto-phishing-ia/
-│
-├── README.md
-├── artigo/
-│   └── artigo_parcial.pdf
-│
-├── notebooks/
-│   └── Projeto_IA.ipynb
-│
-├── dados/
-│   └── README.md
-│
-└── resultados/
-    ├── distribuicao_classes.png
-    ├── correlacoes_top10.png
-    ├── matriz_regressao.png
-    ├── matriz_arvore.png
-    ├── matriz_random_forest.png
-    ├── importancia_arvore.png
-    ├── importancia_random_forest.png
-    ├── comparacao_modelos.png
-    └── comparacao_modelos.csv
-
-Como executar
-
-O projeto pode ser executado no Google Colab.
-
-Abra o arquivo Projeto_IA.ipynb;
-
-Execute as células em ordem;
-
-O dataset é carregado diretamente do UCI Machine Learning Repository;
-
-Ao final do notebook serão exibidas as métricas, matrizes de confusão e comparações entre os modelos.
-
-Principais bibliotecas utilizadas:
-
-pandas
-numpy
-matplotlib
-scikit-learn
-ucimlrepo
-
-Aspectos éticos
-
-Um detector de phishing pode cometer dois tipos importantes de erro:
-
-Falso negativo: um site de phishing é classificado como legítimo;
-
-Falso positivo: um site legítimo é classificado como phishing.
-
-Por isso, o modelo deve ser utilizado como uma ferramenta de apoio à segurança e não como garantia absoluta de que um site é seguro.
-
-Também é importante atualizar periodicamente os dados e os modelos, já que novas estratégias de phishing surgem constantemente.
-
-Artigo
-
-O artigo parcial do projeto está disponível na pasta artigo/.
-
-Status
-
-Parte 2 — análise exploratória, preparação dos dados, implementação dos modelos e resultados parciais concluídos.
+A proposta inicial registra Gemini. Esta etapa contou com assistência do Codex/ChatGPT na programação, redação e revisão. O grupo deve revisar e compreender integralmente o material, declarar corretamente o uso das ferramentas e assumir responsabilidade pela entrega.
