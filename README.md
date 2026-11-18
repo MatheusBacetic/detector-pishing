@@ -15,7 +15,7 @@ Classificação offline de websites como phishing (0) ou legítimos (1), com 50 
 ## Arquivos da entrega
 
 - `artigo/Artigo_Final.pdf`: artigo no formato SBC solicitado.
-- `entrega/Rubrica_N2_identificada.docx`: autoavaliação atual de 72/100.
+- `entrega/Rubrica_N2_identificada.docx`: autoavaliação atual de 75/100.
 - `notebooks/Projeto_IA_Final.ipynb`: análise e experimento com saídas salvas.
 - `src/experimento.py`: aquisição, preparação, treinamento e avaliação.
 - `src/demonstrar.py`: inferência offline com exemplos reservados de teste.
@@ -53,7 +53,7 @@ O código registra a origem, versões e SHA-256 do CSV em `resultados/final/exec
 
 ## Pendências antes da submissão
 
-Gravar e publicar no YouTube o vídeo de até cinco minutos, inserir seu link no artigo, confirmar a publicação final dos arquivos neste repositório e revisar a autoavaliação conforme as evidências. A nota atual considera vídeo ausente e publicação final pendente. Um integrante envia o artigo PDF e a rubrica Word pelo AVA no prazo da disciplina.
+A versão final do projeto está publicada neste repositório. Falta gravar e publicar no YouTube o vídeo de até cinco minutos, inserir seu link no artigo e concluir a revisão do grupo. A autoavaliação atual é 75/100 e considera o vídeo ainda ausente; após disponibilizá-lo, revisar o critério de apresentação conforme as evidências. Um integrante envia o artigo PDF e a rubrica Word pelo AVA no prazo da disciplina.
 
 ## Assistência de IA
 
