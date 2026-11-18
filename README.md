@@ -35,7 +35,7 @@ python src/demonstrar.py
 
 O experimento baixa o CSV da UCI automaticamente para `dados/` se ele não existir. A base grande não acompanha a entrega pelo navegador. Para apenas demonstrar o modelo já treinado, execute `python src/demonstrar.py`; não é preciso baixar a base.
 
-Para usar o notebook, abra a pasta inteira do projeto em um ambiente Jupyter e execute `notebooks/Projeto_IA_Final.ipynb`. O notebook importa o código de `src/`; preserve essa estrutura de pastas.
+No Google Colab, abra `notebooks/Projeto_IA_Final.ipynb` e execute todas as células desde o início. A primeira célula identifica a pasta do projeto; se o notebook estiver sozinho, baixa automaticamente o repositório completo. Nos resultados, ROOT é obtido diretamente do módulo do experimento, evitando procurar imagens na pasta errada. Em Jupyter local, também é possível abrir a pasta inteira do projeto e preservar sua estrutura. Execute o treinamento antes da demonstração para gerar um modelo compatível com o ambiente atual.
 
 ## Resultados e limites
 
