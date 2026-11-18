@@ -51,9 +51,13 @@ Fonte: https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset
 
 O código registra a origem, versões e SHA-256 do CSV em `resultados/final/execucao.json`. Não abrir os endereços contidos na base.
 
-## Pendências antes da submissão
+## Vídeo de apresentação
 
-A versão final do projeto está publicada neste repositório. Falta gravar e publicar no YouTube o vídeo de até cinco minutos, inserir seu link no artigo e concluir a revisão do grupo. A autoavaliação atual é 75/100 e considera o vídeo ainda ausente; após disponibilizá-lo, revisar o critério de apresentação conforme as evidências. Um integrante envia o artigo PDF e a rubrica Word pelo AVA no prazo da disciplina.
+[Assistir à apresentação no YouTube](https://youtu.be/Opsir3_gnv0) — duração de 4 minutos e 8 segundos, dentro do limite de cinco minutos.
+
+## Revisão antes da submissão
+
+O projeto está publicado neste repositório e o link do vídeo consta no artigo. Concluir a revisão do grupo e rever o critério de apresentação na rubrica após avaliar o conteúdo do vídeo. A autoavaliação de 75/100 foi preenchida antes da disponibilização do vídeo e permanece provisória. Um integrante envia o artigo PDF e a rubrica Word pelo AVA no prazo da disciplina.
 
 ## Assistência de IA
 
